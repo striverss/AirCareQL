@@ -1,0 +1,181 @@
+html {
+  height: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: #555;
+}
+img {
+  border: 0;
+}
+body {
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+  font-size: 14px;
+  background: #f5f5f5;
+  color: #555;
+  -webkit-tap-highlight-color: transparent;
+  height: 100%;
+  overflow: hidden;
+}
+@media (max-width: 800px) {
+  body {
+  	width: 100%;
+  }
+}
+@media (min-width: 801px) {
+  body {
+  	width: 600px;
+  	margin: 0 auto;
+  }    
+}
+div#root {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+div#backPage {
+  position: relative;
+  background-color: #efeff4;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+div#backPage section#dlPage {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto 0;
+  color: #2c3e50;
+}
+div#backPage section#dlPage div#dlIcon {
+  position: relative;
+  display: block;
+  border-radius: 50%;
+  background: #bfe7ec;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 40px;
+}
+div#backPage section#dlPage div#dlIcon:after { 
+  content: "";
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 50%;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
+}
+div#backPage section#dlPage div#aireCellTitle {
+  position: relative;
+  margin: 10px 0 5px;
+  padding: 0 15px;
+  color: #999;
+}
+div#backPage section#dlPage div#aireCells {
+  background-color: #fff;
+  font-size: 17px;
+  overflow: hidden;
+  position: relative;
+  padding-left: 15px;
+}
+div#backPage section#dlPage div#aireCells:before, section#dlPage div#aireCells:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #e5e5e5;
+} 
+div#backPage section#dlPage div#aireCells:before {
+  top: 0;
+}
+div#backPage section#dlPage div#aireCells:after {
+  bottom: 0;
+}
+div#backPage section#dlPage div#aireCells div.aireCell {
+  position: relative;
+  border-top: 1px solid #e5e5e5;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  box-sizing: border-box;
+}
+div#backPage section#dlPage div#aireCells div.aireCell:first-child {
+  border: none;
+}
+div#backPage section#dlPage div#aireCells div.aireCell div.aireCellBd {
+  flex: 1;
+}
+div#backPage section#dlPage div#aireCells div.aireCell div.aireCellBd div#aireCellArrow {
+  content: " ";
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-width: 2px 2px 0 0;
+  border-color: #C8C8CD;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: relative;
+  top: -2px;
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  margin-top: -3px;
+}
+div#backPage section#dlPage div#aireCells div.aireCell label.aireCellLabel {
+  display: block;
+  width: 90px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+div#backPage section#dlPage div#aireCells div.aireCell div.aireCellBd select#aireCellSelect {
+  -webkit-appearance: none;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  width: 100%;
+  font-size: inherit;
+  height: 44px;
+  line-height: 44px;
+  position: relative;
+  z-index: 1;
+  padding-right: 30px;
+}
+div#backPage section#dlPage div#aireCells div.aireCell div.aireCellBd input.aireCellInput {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  background-color: transparent;
+  font-size: inherit;
+  color: inherit;
+  height: 24px;
+  line-height: 24px;
+}
+div#backPage section#dlPage button#aireBtn {
+  position: relative;
+  display: block;
+  margin: 30px auto 5px;
+  width: 80%;
+  padding-left: 14px;
+  padding-right: 14px;
+  box-sizing: border-box;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #51c4d4;
+  height: 46px;
+  line-height: 46px;
+  border-radius: 4px;
+  overflow: hidden;
+  -webkit-appearance: none;
+  border: none;
+}

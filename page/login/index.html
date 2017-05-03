@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>Aire Care</title>
+	<link rel="stylesheet" type="text/css" href="../../static/css/login.css">
+  <script type="text/javascript" src="../../static/javascript/socketio.js"></script>
+  <script type="text/javascript" src="../../static/javascript/mimo-node.js"></script>
+  <script type="text/javascript" src="../../static/javascript/getDatas.js"></script>
+</head>
+<body>
+  <div id="root">
+    <div id="backPage">
+      <section id="dlPage">
+        <div id="dlIcon"></div>
+        <div id="aireCellTitle">设备信息</div>
+        <div id="aireCells">
+        	<div class="aireCell">
+        	  <label class="aireCellLabel">地区</label>
+        	  <div class="aireCellBd">
+        	  	<select id="aireCellSelect">
+        	  	  <option value="北京海淀区">北京海淀区</option>
+        	  	  <option value="北京朝阳区">北京朝阳区</option>
+        	  	  <option value="北京西城区">北京西城区</option>
+        	  	  <option value="北京石景山区">北京石景山区</option>
+        	  	</select>
+        	  	<div id="aireCellArrow"></div>
+        	  </div>
+        	</div>
+          <div class="aireCell">
+            <label class="aireCellLabel">学校</label>
+            <div class="aireCellBd">
+              <input type="text" class="aireCellInput" placeholder="学校名..." />
+            </div>
+          </div>
+          <div class="aireCell">
+            <label class="aireCellLabel">班级</label>
+            <div class="aireCellBd">
+              <input type="text" class="aireCellInput" placeholder="班级名..." />
+            </div>
+          </div>
+          <div class="aireCell">
+            <label class="aireCellLabel">设备号</label>
+            <div class="aireCellBd">
+              <input type="text" class="aireCellInput" placeholder="设备号..." />
+            </div>
+          </div>
+        </div>
+<!--         <button id="aireBtn" onclick="alert(DATA[0].type);"></button> -->
+        <button id="aireBtn" onclick="window.location.href='../home/index.html'">确定</button>
+      </section>
+    </div>
+  </div>
+<!--   <script type="text/javascript">
+    document.getElementById('aireBtn').innerHTML = DATA[0].type;
+  </script> -->
+</body>
+</html>

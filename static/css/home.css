@@ -1,0 +1,224 @@
+html {
+	height: 100%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+a {
+	text-decoration: none;
+	color: #555;
+}
+img {
+	border: 0;
+}
+body {
+	font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif; 
+	font-size: 14px; 
+	background: #f5f5f5; 
+	color: #555; 
+	-webkit-tap-highlight-color: transparent;
+	height: 100%;
+	overflow:hidden;
+}
+@media (max-width: 800px) {
+	body {
+		width: 100%;
+	}
+}
+@media (min-width: 801px) {
+    body {
+    	width: 600px;
+    	margin: 0 auto;
+    }    
+}
+div#root {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+div#backPage {
+	position: relative;
+    background-color: #efeff4;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+#homePage {
+  position: relative;
+  padding-top: 20px;
+  background: -webkit-linear-gradient(top, #0c7ec4, #5f92c9);
+  color: #fff;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  /*height: 100%;*/
+  /*display: flex;
+  flex-direction: column;
+  justify-content: flex-start;*/
+}
+#header {
+  margin: 0 20px;
+  text-align: left;
+  height: 25px;
+  line-height: 25px;
+  padding-left: 20px;
+  color: #fff;
+}
+#loc {
+  position: relative;
+  font-size: 15px;
+}
+#header:before {
+  position: absolute;
+  content: '';
+  left: 15px;
+  width: 25px;
+  height: 25px;
+  background: url('../img/loc.png') no-repeat;
+  background-size: 25px 25px;
+}
+#weaArea {
+  position: relative;
+  padding: 20px;
+}
+#weaInfo {
+  font-size: 15px;
+}
+#weaTempe {
+  position: relative;
+  font-size: 60px;
+}
+#weaTempe:after {
+  position: absolute;
+  content: '°';
+  top: 6px;
+  width: 15px;
+  height: 15px;
+  font-size: 22px;
+  font-weight: 400;
+}
+#aqOuterArea {
+  position: relative;
+  display: inline-block;
+  height: 25px;
+  padding: 5px 10px;
+  margin: 0 20px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, .1);
+}
+.aqImgCon {
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  text-align: center;
+}
+.warn2 {
+  background: #d7af0e;
+}
+#aqImg {
+  width: 15px;
+  margin-top: 5px;
+}
+#aqInfo {
+  padding: 0 5px;
+}
+#airArea {
+  position: relative;
+  text-align: center;
+}
+#airCity {
+  position: relative;
+  object-fit: cover;
+  width: 100%;
+}
+#airInfo {
+  position: relative;
+  font-size: 15px;
+}
+#air {
+  font-size: 80px;
+}
+#dragBoxArea {
+  position: relative;
+  top: -2px;
+}
+#dragBox {
+  position: relative;
+  height: auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  transform: translateY(0);
+  background-color: #fff;
+  opacity: 0.9;
+  padding: 0 15px;
+}
+#tabBarArea {
+  display: flex;
+  justify-content: space-around;
+  color: #555;
+}
+#tabBarItem1, #tabBarItem2, #tabBarItem3 {
+  padding: 10px;
+  width: 90px;
+  text-align: center;
+  font-size: 18px;
+}
+#pageOne {
+  display: none;
+}
+#pageTwo {
+  display: none;
+  position: relative;
+  padding: 0 15px 100px;
+  background-color: #fff;
+  opacity: .9;
+}
+#pageThree {
+  display: none;
+  position: relative;
+  padding: 0 15px 100px;
+  background-color: #fff;
+  opacity: .9;
+}
+
+
+/*pageOne.css*/
+#airSuggest {
+  padding: 5px 15px 100px;
+}
+.airSuggestCon {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px 0;
+}
+.airSuggestItem {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  padding: 22px 20px 30px;
+}
+.airSuggestItem img {
+  width: 100%;
+  object-fit: cover;
+}
+.airSuggestHead, .airSuggestFoot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-size: 14px;
+  text-align: center;
+}
+.airSuggestHead {
+  top: 0;
+}
+.airSuggestFoot {
+  bottom: 0;
+}

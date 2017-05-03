@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>Aire Care</title>
+	<link rel="stylesheet" type="text/css" href="../../static/css/home.css">
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=6T07bnlvyWw7xi7H8y9vDyekghYVTkFz"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
+	<script type="text/javascript" src="../../static/javascript/socketio.js"></script>
+	<script type="text/javascript" src="../../static/javascript/mimo-node.js"></script>
+	<script type="text/javascript" src="../../static/javascript/getDatas.js"></script>
+	<script type="text/javascript" src="../../static/javascript/DataList.js"></script>
+</head>
+<body id="home">
+  <div id="root">
+  	<div id="backPage">
+  	  <section id="homePage">
+
+  	  	<header id="header">
+  	  	  <div id="loc"></div>
+  	  	</header>
+
+        <section id="weaArea">
+          <div id="weaInfo"></div>
+          <div id="weaAq">
+          	<span id="weaTempe"></span>
+          	<div id="aqOuterArea">
+          	  <span class="aqImgCon warn2">
+          	  	<img id="aqImg" src="../../static/img/leaf.png">
+          	  </span>
+          	  <span id="aqInfo"></span>
+          	</div>
+          </div>	
+        </section>
+
+        <section id="airArea">
+          <div id="airInfo"></div>
+          <div id="air"></div>
+          <img id="airCity" src="../../static/img/city.png">
+        </section>
+
+        <section id="dragBoxArea">
+          <div id="dragBox">
+            <div id="tabBarArea">
+              <div id="tabBarItem1" onclick="touch1()" style="border-bottom: 3px solid #51c4d9;">相关指数</div>
+              <div id="tabBarItem2" onclick="touch2()">实时曲线</div>
+              <div id="tabBarItem3" onclick="touch3()">历史曲线</div>
+            </div>
+          </div>
+          <div id="pageOne" style="display: block;">
+		      <div id="airSuggest">
+		        <div class="airSuggestCon">
+		          <div class="airSuggestItem">
+		            <div class="airSuggestHead">穿衣</div>
+		            <img src="../../static/img/cloth.png" />
+		            <div class="airSuggestFoot"></div>
+		          </div>
+		          <div class="airSuggestItem">
+		            <div class="airSuggestHead">湿度</div>
+		            <img src="../../static/img/humidity.png" />
+		            <div class="airSuggestFoot"></div>
+		          </div>
+		          <div class="airSuggestItem">
+		            <div class="airSuggestHead">口罩指数</div>
+		            <img src="../../static/img/respirator.png" />
+		            <div class="airSuggestFoot">50</div>
+		          </div>
+		        </div>
+		        <div class="airSuggestCon">
+		          <div class="airSuggestItem">
+		            <div class="airSuggestHead">出行建议</div>
+		            <img src="../../static/img/sports.png" />
+		            <div class="airSuggestFoot"></div>
+		          </div>
+		          <div class="airSuggestItem">
+		            <div class="airSuggestHead">紫外线</div>
+		            <img src="../../static/img/sunblock.png" />
+		            <div class="airSuggestFoot"></div>
+		          </div>
+		          <div class="airSuggestItem">
+		            <div class="airSuggestHead">通风指数</div>
+		            <img src="../../static/img/window.png" />
+		            <div class="airSuggestFoot">89</div>
+		          </div>
+		        </div>
+		      </div>
+          </div>
+          <div id="pageTwo">
+          	
+          	<canvas id="myChart_1" style="position: relative; width: 100%;" width="400" height="400"></canvas>
+
+          	<script type="text/javascript" id="firstPage">
+          		var data1 = {
+			  	  	// labels: airLabel,
+			  	  	datasets: [{
+			          label: 'sensor1',
+			          fill: false,
+			          backgroundColor: 'rgba(255, 99, 132, 0.8)',
+			          borderColor: 'rgba(255, 99, 132, 0.8)',
+			          pointBackgroundColor: '#fff',
+			          // data: airOut,
+			        }, {
+			          label: 'sensor2',
+			          fill: false,
+			          backgroundColor: 'rgba(75, 192, 192, 0.8)',
+			          borderColor: 'rgba(75, 192, 192, 0.8)',
+			          pointBackgroundColor: '#fff',
+			          // data: airIn,
+			        }, {
+			          label: 'sensor3',
+			          fill: false,
+			          backgroundColor: 'rgba(138, 43, 226, 0.8)',
+			          borderColor: 'rgba(138, 43, 226, 0.8)',
+			          pointBackgroundColor: '#fff',
+			          // data: airIn,
+			        }, {
+			          label: 'sensor4',
+			          fill: false,
+			          backgroundColor: 'rgba(60, 179, 113, 0.8)',
+			          borderColor: 'rgba(60, 179, 113, 0.8)',
+			          pointBackgroundColor: '#fff',
+			          // data: airIn,
+			        }, {
+			          label: 'sensor5',
+			          fill: false,
+			          backgroundColor: 'rgba(255, 69, 0, 0.8)',
+			          borderColor: 'rgba(255, 69, 0, 0.8)',
+			          pointBackgroundColor: '#fff',
+			          // data: airIn,
+			        }, {
+			          label: 'sensor6',
+			          fill: false,
+			          backgroundColor: 'rgba(105, 105, 105, 0.8)',
+			          borderColor: 'rgba(105, 105, 105, 0.8)',
+			          pointBackgroundColor: '#fff',
+			          // data: airIn,
+			        }, 
+			        ]
+				};
+
+          	</script>
+          	
+          </div>
+          <div id="pageThree">
+          	
+          	<canvas id="myChart_2" style="position: relative; width: 100%;" width="400" height="400"></canvas>
+
+          	<script type="text/javascript" id="secondPage">
+          		var data2 = {
+			  	  	// labels: airLabel,
+			  	  	datasets: [{
+			          label: 'sensor1',
+			          fill: false,
+			          backgroundColor: 'rgba(255, 99, 132, 0.8)',
+			          borderColor: 'rgba(255, 99, 132, 0.8)',
+			          pointBackgroundColor: '#fff',
+			          // data: airOut,
+			        }, {
+			          label: 'sensor2',
+			          fill: false,
+			          backgroundColor: 'rgba(75, 192, 192, 0.8)',
+			          borderColor: 'rgba(75, 192, 192, 0.8)',
+			          pointBackgroundColor: '#fff',
+			          // data: airIn,
+			        }, {
+			          label: 'sensor3',
+			          fill: false,
+			          backgroundColor: 'rgba(138, 43, 226, 0.8)',
+			          borderColor: 'rgba(138, 43, 226, 0.8)',
+			          pointBackgroundColor: '#fff',
+			          // data: airIn,
+			        }, {
+			          label: 'sensor4',
+			          fill: false,
+			          backgroundColor: 'rgba(60, 179, 113, 0.8)',
+			          borderColor: 'rgba(60, 179, 113, 0.8)',
+			          pointBackgroundColor: '#fff',
+			          // data: airIn,
+			        }, {
+			          label: 'sensor5',
+			          fill: false,
+			          backgroundColor: 'rgba(255, 69, 0, 0.8)',
+			          borderColor: 'rgba(255, 69, 0, 0.8)',
+			          pointBackgroundColor: '#fff',
+			          // data: airIn,
+			        }, {
+			          label: 'sensor6',
+			          fill: false,
+			          backgroundColor: 'rgba(105, 105, 105, 0.8)',
+			          borderColor: 'rgba(105, 105, 105, 0.8)',
+			          pointBackgroundColor: '#fff',
+			          // data: airIn,
+			        }, 
+			        ]
+				};
+
+          	</script>
+          	
+          </div>
+        </section>
+
+        <script>
+			function touch1() {//事件冒泡？？？
+                document.getElementById("pageOne").style.display='block';
+                document.getElementById("pageTwo").style.display='none';
+                document.getElementById("pageThree").style.display='none';
+                document.getElementById("tabBarItem1").style.borderBottom='3px solid #51c4d9';
+                document.getElementById("tabBarItem2").style.borderBottom='0px';
+                document.getElementById("tabBarItem3").style.borderBottom='0px';
+
+			}
+			function touch2() {
+			    document.getElementById("pageOne").style.display='none';
+                document.getElementById("pageTwo").style.display='block';
+                document.getElementById("pageThree").style.display='none';
+                document.getElementById("tabBarItem2").style.borderBottom='3px solid #51c4d9';
+                document.getElementById("tabBarItem1").style.borderBottom='0px';
+                document.getElementById("tabBarItem3").style.borderBottom='0px';
+                //点击之后重新绘制
+		  	  	var ctx1 = document.getElementById("myChart_1").getContext("2d");
+				var myBarChart1 = new Chart(ctx1, {
+					type: 'line',
+					data: data1,
+				});
+			}
+			function touch3() {
+			    document.getElementById("pageOne").style.display='none';
+                document.getElementById("pageTwo").style.display='none';
+                document.getElementById("pageThree").style.display='block';
+                document.getElementById("tabBarItem3").style.borderBottom='3px solid #51c4d9';
+                document.getElementById("tabBarItem2").style.borderBottom='0px';
+                document.getElementById("tabBarItem1").style.borderBottom='0px';
+                //点击之后重新绘制
+		  	  	var ctx2 = document.getElementById("myChart_2").getContext("2d");
+				var myBarChart2 = new Chart(ctx2, {
+					type: 'line',
+					data: data2,
+				});
+			}
+
+
+		</script>
+		<script type="text/javascript">
+		//百度定位模块
+			var geolocation = new BMap.Geolocation();    
+			var gc = new BMap.Geocoder();     
+			  
+			geolocation.getCurrentPosition( function(r) {   //定位结果对象会传递给r变量  
+		        if(this.getStatus() == BMAP_STATUS_SUCCESS) {
+		        //通过Geolocation类的getStatus()可以判断是否成功定位。  
+		            var pt = r.point;    
+		            gc.getLocation(pt, function(rs){    
+		                var addComp = rs.addressComponents;    
+		                // alert(addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber);
+		                document.getElementById("loc").innerHTML = 
+		                addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber;    
+		            });  
+		        }  
+		        else {  
+			            //关于状态码    
+			            //BMAP_STATUS_SUCCESS   检索成功。对应数值“0”。    
+			            //BMAP_STATUS_CITY_LIST 城市列表。对应数值“1”。    
+			            //BMAP_STATUS_UNKNOWN_LOCATION  位置结果未知。对应数值“2”。    
+			            //BMAP_STATUS_UNKNOWN_ROUTE 导航结果未知。对应数值“3”。    
+			            //BMAP_STATUS_INVALID_KEY   非法密钥。对应数值“4”。    
+			            //BMAP_STATUS_INVALID_REQUEST   非法请求。对应数值“5”。    
+			            //BMAP_STATUS_PERMISSION_DENIED 没有权限。对应数值“6”。(自 1.1 新增)    
+			            //BMAP_STATUS_SERVICE_UNAVAILABLE   服务不可用。对应数值“7”。(自 1.1 新增)    
+			            //BMAP_STATUS_TIMEOUT   超时。对应数值“8”。(自 1.1 新增)    
+		            switch(this.getStatus()) {  
+		                case 2:  
+		                    alert( '位置结果未知 获取位置失败.' );  
+		                break;  
+		                case 3:  
+		                    alert( '导航结果未知 获取位置失败..' );  
+		                break;  
+		                case 4:  
+		                    alert( '非法密钥 获取位置失败.' );  
+		                break;  
+		                case 5:  
+		                    alert( '对不起,非法请求位置  获取位置失败.' );  
+		                break;  
+		                case 6:  
+		                    alert( '对不起,当前 没有权限 获取位置失败.' );  
+		                break;  
+		                case 7:  
+		                    alert( '对不起,服务不可用 获取位置失败.' );  
+		                break;  
+		                case 8:  
+		                    alert( '对不起,请求超时 获取位置失败.' );  
+		                break;     
+		            }  
+			    }          
+			  
+			},  
+			{enableHighAccuracy: true}//提高计算精确度
+			)  
+		</script>
+  	  </section>
+  	</div>
+  </div>
+</body>
+</html>

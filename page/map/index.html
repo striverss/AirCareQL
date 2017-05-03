@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+       <title>Aire Care</title>
+   </head>
+   <body style="height: 100%; margin: 15px;" >
+<!--    测试按钮 -->
+<!--        <input type="button" onclick="shuai()" value="Display alert box" /> -->
+		<div id="mapMax" style="height: 100%;"></div>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=6T07bnlvyWw7xi7H8y9vDyekghYVTkFz"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+		<script type="text/javascript" src="../../static/javascript/socketio.js"></script>
+		<script type="text/javascript" src="../../static/javascript/mimo-node.js"></script>
+		<script type="text/javascript" src="../../static/javascript/mapGetDatas.js"></script>
+		<script type="text/javascript" src="../../static/javascript/DataList.js"></script>
+		<script type="text/javascript" id="map">
+
+        // var sensor = DataList.Sensor;
+        // var place = DataList.Location;
+        var center = DataList.Center;
+
+		var dom = document.getElementById("mapMax");
+		var myChart = echarts.init(dom);
+		option = null;
+		option = {
+		    title: {
+		        text: '传感器监测位置及污染分布图',
+		        left: 'center',
+		        textStyle:{
+		        	fontSize:63
+		        },
+		        top:'5%'
+		    },
+		    tooltip : {
+		        trigger: 'item',
+		        textStyle:{
+		        	fontSize:30
+		        },
+		    },
+            visualMap:{
+            	type:'piecewise',
+            	splitNumber:6,
+            	pieces:[
+                    {min:301},
+                    {min:201,max:300},
+                    {min:151,max:200},
+                    {min:101,max:150},
+                    {min:51, max:100},
+                    {min:1,  max:50}
+            	],
+            	color:['#990000','#8b008b','#ff0000','#ffa500','#ffff00','#00ff00'],
+            	show: false
+            },
+		    bmap: {
+		        center: center,
+		        zoom: 18,
+		        roam: true,
+		        mapStyle: 'normal',
+		    },
+		    series : [
+		        {
+		            name: '传感器设定点坐标及PM2.5值',
+		            type: 'effectScatter',
+		            coordinateSystem: 'bmap',
+		            // data: convertData(data),
+		            symbolSize: 40,
+		            rippleEffect: {
+		                brushType: 'fill'
+		            },
+		            itemStyle: {
+		                normal: {
+		                    color: 'red',
+		                    shadowBlur: 10,
+		                    shadowColor: 'black'
+		                }
+		            },
+		            zlevel: 1
+		        }
+		    ]
+		};;
+       </script>
+   </body>
+</html>
